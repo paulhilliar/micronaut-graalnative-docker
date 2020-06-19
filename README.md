@@ -22,6 +22,9 @@ The Dockerfile is a two stage build.
 The first stage runs using the (very large - 1gb+) `oracle/graalvm-ce:latest` image and will build the binary for the server
 The second stage takes the built binary and wraps it into a much smaller Docker image
 
+Note: Compiling GraalVM native images takes several minutes.  So the first stage above could be prettty lengthy.
+However because the native image build is happening within Docker then no software needs to be installed - it's all within the base image for the first docker build stage  
+
 ## Useful commands
 To run the container normally:
 
