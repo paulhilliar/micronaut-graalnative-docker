@@ -2,6 +2,18 @@
 
 This example is adapted from the Micronaut data JDBC example (https://github.com/micronaut-projects/micronaut-data/tree/master/examples/example-jdbc)
 
+Problem statement:
+Desire to demonstrate running Micronaut + GraalVM native within Docker.
+
+When you compile GraalVM images you are building them for the local platform (e.g. building for MacOS)
+
+In order to run within a Docker image you need to compile the native image on Linux.
+
+So, how do you do this?
+
+Answer is to build the native image within Docker.
+
+The issue with that is that a basic Docker image build will be 1.3GB, so the final piece is to make a multi stage Docker build where the built native image binary is wrapped in a smaller base image.  Thus reducing the image size from 1.3GB to 300MB (I'd still like to make this smaller but need to find a different base image that works with native images)
 
 ## Building:
 * Build the shaded jar using Maven
