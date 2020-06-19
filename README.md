@@ -13,11 +13,11 @@ So, how do you do this?
 
 Answer is to build the native image within Docker.
 
-The issue with that is that a basic Docker image build will be 1.3GB, so the final piece is to make a multi stage Docker build where the built native image binary is wrapped in a smaller base image.  Thus reducing the image size from 1.3GB to 300MB (I'd still like to make this smaller but need to find a different base image that works with native images)
+The issue with that is that a basic Docker image build will be 1.3GB, so the final piece is to make a multi stage Docker build where the built native image binary is wrapped in a smaller base image.  Thus reducing the image size from 1.3 GB to 72.6 MB
 
 ## Building:
-* Build the shaded jar using Maven
-* Run build-native-image-docker.sh to build the GraalVM native image
+* Build the shaded jar using Maven (`mvn clean install`)
+* Run `build-native-image-docker.sh` to build the GraalVM native image
 
 Output will be a docker image.  You can see the size of the built image using
 
