@@ -56,3 +56,7 @@ Remove all stopped containers
 `docker rm $(docker ps -a -q)`
 
 
+# Building without Docker
+Run `build-native-image-non-docker.sh` then start.sh to run the native image outside of Docker.
+This requires GraalVM to be installed and also the GraalVM native image utility.
+This should see the server start up in approx 40ms
