@@ -31,11 +31,17 @@ $ ./build-native-image-docker.sh
 ```
 
 The Dockerfile is a two stage build.
-The first stage runs using the (very large - 1gb+) `oracle/graalvm-ce:latest` image and will build the binary for the server
-The second stage takes the built binary and wraps it into a much smaller Docker image
+The first stage runs using the (very large - 1.3GB) `oracle/graalvm-ce:latest` image and will build the binary for the server
+The second stage takes the built binary and wraps it into a much smaller Docker image (73MB)
 
-Note: Compiling GraalVM native images takes several minutes.  So the first stage above could be prettty lengthy.
-However because the native image build is happening within Docker then no software needs to be installed - it's all within the base image for the first docker build stage  
+Note: Compiling GraalVM native images takes several minutes.  So the first stage above could be pretty lengthy.
+However because the native image build is happening within Docker then no software needs to be installed - it's all within the base image for the first docker build stage.
+
+
+Note that the reason we need to use docker to build the native image is because the native image needs to be a Linux-native binary
+
+So we build within Docker (not locally on your laptop) because the compiled binary will be Linux-native so needs to be built under Linux.  
+  
 
 ## Useful commands
 To run the container normally:
