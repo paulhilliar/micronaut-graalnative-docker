@@ -1,9 +1,9 @@
-# Micronaut / Micronaut Data JDBC / GraalVM native / Docker example
+# Micronaut / Micronaut Data JDBC / GraalVM native / Docker / Kubernetes example
 
 This example is adapted from the Micronaut data JDBC example (https://github.com/micronaut-projects/micronaut-data/tree/master/examples/example-jdbc)
 
 Problem statement:
-Desire to demonstrate running Micronaut + GraalVM native within Docker.
+Desire to demonstrate running Micronaut + GraalVM native within Docker (and optionally Kubernetes).
 
 When you compile GraalVM images you are building them for the local platform (e.g. building for MacOS)
 
@@ -84,3 +84,15 @@ Remove all stopped containers
 Run `build-native-image-non-docker.sh` then start.sh to run the native image outside of Docker.
 This requires GraalVM to be installed and also the GraalVM native image utility.
 This should see the server start up in approx 40ms
+
+
+# Running in Kubernetes
+Go to the Kubernetes folder
+
+`apply -f micronaut-graalnative-docker.deployment.yaml`
+
+The Kubernetes deployment includes liveness/readiness probes against the Micronaut health endpoint (which is enabled in `application.yml`).
+
+Kubernetes will ping the server `/health` endpoint to see when the container is ready/assess its ongoing healthiness.
+
+The Kubernetes deployment exposes the same 8080 port, so the server will be accessible in the same way no matter which method you choose to run it (Graal non-Docker, within Docker, within Kubernetes)
