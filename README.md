@@ -87,7 +87,9 @@ This should see the server start up in approx 40ms
 
 
 # Running in Kubernetes
-Go to the Kubernetes folder
+It's very easy to run Kubernetes on your laptop using Docker Desktop.
+
+To deploy the built example, go to the Kubernetes folder:
 
 `apply -f micronaut-graalnative-docker.deployment.yaml`
 
