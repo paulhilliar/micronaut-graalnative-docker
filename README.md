@@ -91,7 +91,7 @@ It's very easy to run Kubernetes on your laptop using Docker Desktop.
 
 To deploy the built example, go to the Kubernetes folder:
 
-`apply -f micronaut-graalnative-docker.deployment.yaml`
+`kubectl apply -f micronaut-graalnative-docker.deployment.yaml`
 
 The Kubernetes deployment includes liveness/readiness probes against the Micronaut health endpoint (which is enabled in `application.yml`).
 
